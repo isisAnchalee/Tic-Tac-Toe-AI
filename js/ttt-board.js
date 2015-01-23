@@ -2,6 +2,10 @@
   if (typeof TTT === "undefined") {
     window.TTT = {};
   }
+  
+  var Board = TTT.Board = function () {
+    this.grid = Board.makeGrid();
+  };
 
   Board.marks = ["x", "o"];
 
@@ -55,7 +59,7 @@
 
     this.grid[pos[0]][pos[1]] = mark;
   };
-  
+
   Board.prototype.winner = function () {
     var posSeqs = [
       // horizontals
@@ -102,8 +106,5 @@
     return null;
   };
 
-  var Board = TTT.Board = function () {
-    this.grid = Board.makeGrid();
-  };
 
 })();
