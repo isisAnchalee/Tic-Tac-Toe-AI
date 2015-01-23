@@ -10,8 +10,4 @@
     this.posses = [];
   };
 
-  HumanPlayer.prototype.makeMove = function(){
-
-  };
-
 })();

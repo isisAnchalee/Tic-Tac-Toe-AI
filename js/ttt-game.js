@@ -10,14 +10,6 @@
     this.AIPlayer = new TTT.AIPlayer(this, this.board, this.humanPlayer);
   };
 
-  Game.prototype.startGame = function(){
-    while (!this.gameOver()){
-
-    }
-
-    endGame();
-  }
-
   Game.prototype.swapTurn = function () {
     if (this.currentPlayer === TTT.Board.marks[0]) {
       this.currentPlayer = TTT.Board.marks[1];
@@ -26,20 +18,20 @@
     }
   };
 
-  Game.prototype.gameOver = function(){
-    return this.board.isOver();
-  };
-
   Game.prototype.playMove = function (pos) {
     this.board.placeMark(pos, this.currentPlayer);
     this.humanPlayer.posses.push(pos)
+    this.endGame();
     this.swapTurn();
     this.AIPlayer.playTurn();
+    this.endGame();
     this.swapTurn();
   };
 
-  function endGame(){
-    console.log("GAME OVER!")
+  Game.prototype.endGame = function(){
+    if (this.board.isOver()){
+      console.log("game over!!!");
+    }
   }
   
 })();
