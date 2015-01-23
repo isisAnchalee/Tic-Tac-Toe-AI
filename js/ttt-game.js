@@ -5,6 +5,7 @@
 
   var Game = TTT.Game = function (player1, player2) {
     this.board = new TTT.Board();
+    this.currentPlayer = TTT.Board.marks[0];
 	  this.player1 = player1;
 	  this.player2 = player2;
   };
@@ -36,7 +37,7 @@
   };
 
   function endGame(){
-
+    console.log("GAME OVER!")
   }
   
 })();
