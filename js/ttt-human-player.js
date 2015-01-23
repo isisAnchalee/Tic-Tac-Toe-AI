@@ -5,7 +5,7 @@
 
   var HumanPlayer = TTT.HumanPlayer = function () {
 	  this.game = game;
-    this.sign = "X"
+    this.sign = "x"
   };
 
   HumanPlayer.prototype.makeMove = function(){

@@ -5,7 +5,7 @@
 
   var AIPlayer = TTT.AIPlayer = function () {
 	  this.game = game;
-    this.sign = "O"
+    this.sign = "o"
   };
 
   AIPlayer.prototype.makeMove = function(){

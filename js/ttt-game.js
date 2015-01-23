@@ -18,6 +18,14 @@
     endGame();
   }
 
+  Game.prototype.swapTurn = function () {
+    if (this.currentPlayer === Board.marks[0]) {
+      this.currentPlayer = Board.marks[1];
+    } else {
+      this.currentPlayer = Board.marks[0];
+    }
+  };
+  
   function endGame(){
 
   }
