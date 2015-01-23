@@ -12,10 +12,8 @@
   };
 
   View.prototype.bindEvents = function () {
-	  
-	  this.$el.on("click", ".spot", this.makeMove.bind(this));  
+    this.$el.on("click", ".spot", this.makeMove.bind(this));  
   }
-  
 
   View.prototype.makeMove = function (event) {
   	  var $square = $(event.currentTarget);
@@ -28,7 +26,6 @@
   	  }
 
   };
-
   
   View.prototype.setupBoard = function () {
 	  var megaString = "";

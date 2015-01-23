@@ -11,11 +11,15 @@
   };
 
   AIPlayer.prototype.playTurn = function(){
-  	// var nextPos = 
-  	// this.posses.push(nextPos)
+  	var nextMove;
+  	for (var i = 0; i < 3; i++){
+  		nextMove = this.checkRows(this, this.board.posSeqs[i])
+  	}
+
+  	nextMove ? this.board.placeMark(nextMove, "o") : this.block();
   };
 
- AIPlayer.prototype.checkRows = function(player, posSeqs, dir){
+ AIPlayer.prototype.checkRows = function(player, posSeqs){
   	var playPos;
     for (var i = 0; i < 3; i++){
     	var counter = 0;
@@ -31,5 +35,17 @@
     return playPos;
   };
 
+ AIPlayer.prototype.block = function(){
+  	var nextMove;
+  	for (var i = 0; i < 3; i++){
+  		nextMove = this.checkRows(this.enemy, this.board.posSeqs[i])
+  	}
+
+  	nextMove ? this.board.placeMark(nextMove, "o") : this.fork();
+  };
+
+  AIPlayer.prototype.fork = function(){
+
+  };
 
 })();

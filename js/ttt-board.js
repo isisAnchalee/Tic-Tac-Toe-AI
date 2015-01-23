@@ -9,6 +9,20 @@
 
   Board.marks = ["x", "o"];
 
+  Board.posSeqs = [
+      // horizontals
+      [[0, 0], [0, 1], [0, 2]],
+      [[1, 0], [1, 1], [1, 2]],
+      [[2, 0], [2, 1], [2, 2]],
+      // verticals
+      [[0, 0], [1, 0], [2, 0]],
+      [[0, 1], [1, 1], [2, 1]],
+      [[0, 2], [1, 2], [2, 2]],
+      // diagonals
+      [[0, 0], [1, 1], [2, 2]],
+      [[2, 0], [1, 1], [0, 2]]
+    ];
+
   Board.makeGrid = function () {
     var grid = [];
 
@@ -62,21 +76,7 @@
   };
 
   Board.prototype.winner = function () {
-    var posSeqs = [
-      // horizontals
-      [[0, 0], [0, 1], [0, 2]],
-      [[1, 0], [1, 1], [1, 2]],
-      [[2, 0], [2, 1], [2, 2]],
-      // verticals
-      [[0, 0], [1, 0], [2, 0]],
-      [[0, 1], [1, 1], [2, 1]],
-      [[0, 2], [1, 2], [2, 2]],
-      // diagonals
-      [[0, 0], [1, 1], [2, 2]],
-      [[2, 0], [1, 1], [0, 2]]
-    ];
-
-    for (var i = 0; i < posSeqs.length; i++) {
+    for (var i = 0; i < this.posSeqs.length; i++) {
       var winner = this.winnerHelper(posSeqs[i]);
       if (winner != null) {
         return winner;

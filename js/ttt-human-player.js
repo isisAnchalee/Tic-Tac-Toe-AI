@@ -3,7 +3,7 @@
     window.TTT = {};
   }
 
-  var HumanPlayer = TTT.HumanPlayer = function (game, board, enemy) {
+  var HumanPlayer = TTT.HumanPlayer = function (game, board) {
 	  this.game = game;
     this.board = board;
     this.mark = "x";

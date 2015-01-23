@@ -6,9 +6,8 @@
   var Game = TTT.Game = function () {
     this.board = new TTT.Board();
     this.currentPlayer = TTT.Board.marks[0];
-    this.AIPlayer = new TTT.AIPlayer(this, this.board);
-	  this.humanPlayer = new TTT.HumanPlayer(this, this.board, this.AIPlayer);
-
+	  this.humanPlayer = new TTT.HumanPlayer(this, this.board);
+    this.AIPlayer = new TTT.AIPlayer(this, this.board, this.humanPlayer);
   };
 
   Game.prototype.startGame = function(){
