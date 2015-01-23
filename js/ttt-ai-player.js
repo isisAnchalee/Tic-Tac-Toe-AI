@@ -15,17 +15,8 @@
   	// this.posses.push(nextPos)
   };
 
-
-
-  AIPlayer.prototype.checkHorizontals = function(player){
+ AIPlayer.prototype.checkRows = function(player, posSeqs, dir){
   	var playPos;
-    var posSeqs = [
-      // horizontals
-      [[0, 0], [0, 1], [0, 2]],
-      [[1, 0], [1, 1], [1, 2]],
-      [[2, 0], [2, 1], [2, 2]],
-    ];
-
     for (var i = 0; i < 3; i++){
     	var counter = 0;
     	for (var j = 0; j < 3; j++){
@@ -38,6 +29,7 @@
     }
 
     return playPos;
-  }
+  };
+
 
 })();
