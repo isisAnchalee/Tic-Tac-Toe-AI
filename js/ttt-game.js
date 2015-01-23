@@ -10,7 +10,7 @@
   };
 
   Game.prototype.startGame = function(){
-    while (!this.hasWon()){
+    while (!this.gameOver()){
       this.player1.playMove();
       this.player2.aiMove();
     }
@@ -25,7 +25,11 @@
       this.currentPlayer = Board.marks[0];
     }
   };
-  
+
+  Game.prototype.gameOver = function(){
+    return this.board.isOver();
+  };
+
   function endGame(){
 
   }
