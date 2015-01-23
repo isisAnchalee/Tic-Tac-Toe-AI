@@ -3,17 +3,17 @@
     window.TTT = {};
   }
 
-  var Game = TTT.Game = function (player1, player2) {
+  var Game = TTT.Game = function () {
     this.board = new TTT.Board();
     this.currentPlayer = TTT.Board.marks[0];
-	  this.player1 = player1;
-	  this.player2 = player2;
+    this.AIPlayer = new TTT.AIPlayer(this, this.board);
+	  this.humanPlayer = new TTT.HumanPlayer(this, this.board, this.AIPlayer);
+
   };
 
   Game.prototype.startGame = function(){
     while (!this.gameOver()){
-      this.player1.playMove();
-      this.player2.aiMove();
+
     }
 
     endGame();
@@ -33,6 +33,9 @@
 
   Game.prototype.playMove = function (pos) {
     this.board.placeMark(pos, this.currentPlayer);
+    this.humanPlayer.posses.push(pos)
+    this.swapTurn();
+    this.AIPlayer.playTurn();
     this.swapTurn();
   };
 
