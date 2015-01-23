@@ -47,13 +47,59 @@
 
     return true;
   };
-  
+
   Board.prototype.placeMark = function (pos, mark) {
     if (!this.isEmptyPos(pos)) {
       throw new MoveError("Is not an empty position!");
     }
 
     this.grid[pos[0]][pos[1]] = mark;
+  };
+  
+  Board.prototype.winner = function () {
+    var posSeqs = [
+      // horizontals
+      [[0, 0], [0, 1], [0, 2]],
+      [[1, 0], [1, 1], [1, 2]],
+      [[2, 0], [2, 1], [2, 2]],
+      // verticals
+      [[0, 0], [1, 0], [2, 0]],
+      [[0, 1], [1, 1], [2, 1]],
+      [[0, 2], [1, 2], [2, 2]],
+      // diagonals
+      [[0, 0], [1, 1], [2, 2]],
+      [[2, 0], [1, 1], [0, 2]]
+    ];
+
+    for (var i = 0; i < posSeqs.length; i++) {
+      var winner = this.winnerHelper(posSeqs[i]);
+      if (winner != null) {
+        return winner;
+      }
+    }
+
+    return null;
+  };
+
+  Board.prototype.winnerHelper = function (posSeq) {
+    for (var markIdx = 0; markIdx < Board.marks.length; markIdx++) {
+      var targetMark = Board.marks[markIdx];
+      var winner = true;
+      for (var posIdx = 0; posIdx < 3; posIdx++) {
+        var pos = posSeq[posIdx];
+        var mark = this.grid[pos[0]][pos[1]];
+
+        if (mark != targetMark) {
+          winner = false;
+        }
+      }
+
+      if (winner) {
+        return targetMark;
+      }
+    }
+
+    return null;
   };
 
   var Board = TTT.Board = function () {
