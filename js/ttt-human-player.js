@@ -7,7 +7,7 @@
 	  this.game = game;
     this.board = board;
     this.mark = "x";
-    this.posses = [];
+    this.poses = [];
   };
 
 })();

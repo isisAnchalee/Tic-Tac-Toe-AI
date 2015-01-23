@@ -3,11 +3,12 @@
     window.TTT = {};
   }
 
-  var AIPlayer = TTT.AIPlayer = function (game, board) {
+  var AIPlayer = TTT.AIPlayer = function (game, board, enemy) {
 	  this.game = game;
 	  this.board = board;
     this.mark = "o";
     this.poses = [];
+    this.enemy = enemy;
   };
 
   AIPlayer.diagonals = [
@@ -30,7 +31,7 @@
   AIPlayer.prototype.playTurn = function(){
   	var nextMove;
   	var dirs = [AIPlayer.diagonals, AIPlayer.verticals, AIPlayer.horizontals];
-  	console.log("playing!!")
+
   	for (var i = 0; i < 3; i++){
   		nextMove = this.checkRows(this, dirs[i]);
   	}
@@ -40,8 +41,10 @@
 
  AIPlayer.prototype.checkRows = function(player, posSeqs){
   	var playPos;
+  	console.log("player:", player);
     for (var i = 0; i < 3; i++){
     	var counter = 0;
+    	  	console.log(player.poses);
     	for (var j = 0; j < 3; j++){
     		if (player.poses.indexOf(posSeqs[0][i][j]) !== - 1){
     			counter += 1;
@@ -55,16 +58,21 @@
   };
 
  AIPlayer.prototype.block = function(){
-  	// var nextMove;
-  	// for (var i = 0; i < 3; i++){
-  	// 	nextMove = this.checkRows(this.enemy, this.board.posSeqs[0][i])
-  	// }
+  	var nextMove;
+  	var dirs = [AIPlayer.diagonals, AIPlayer.verticals, AIPlayer.horizontals];
 
-  	// nextMove ? this.board.placeMark(nextMove, "o") : this.fork();
+  	for (var i = 0; i < 3; i++){
+  		nextMove = this.checkRows(this.enemy, dirs[i]);
+  	}
+
+  	nextMove ? this.board.placeMark(nextMove, "o") : this.fork();
   };
 
   AIPlayer.prototype.fork = function(){
-
+  	console.log("meow!")
   };
 
+  AIPlayer.prototype.colorSquare = function(pos){
+  	$('div[data-row=\'pos[0]\' data-col=\'pos[1]\']').color
+  };
 })();

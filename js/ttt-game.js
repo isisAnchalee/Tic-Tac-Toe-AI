@@ -20,7 +20,7 @@
 
   Game.prototype.playMove = function (pos) {
     this.board.placeMark(pos, this.currentPlayer);
-    this.humanPlayer.posses.push(pos)
+    this.humanPlayer.poses.push(pos)
     this.endGame();
     this.swapTurn();
     this.AIPlayer.playTurn();
